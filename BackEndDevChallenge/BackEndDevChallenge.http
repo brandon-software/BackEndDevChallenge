@@ -1,6 +1,46 @@
 @BackEndDevChallenge_HostAddress = http://localhost:5195
 
-GET {{BackEndDevChallenge_HostAddress}}/weatherforecast/
+### Valid Addition with missing query parameters? 
+GET {{BackEndDevChallenge_HostAddress}}/Calculator/Add?input=1&input2=2
 Accept: application/json
 
-###
+### Valid Addition
+GET {{BackEndDevChallenge_HostAddress}}/Calculator/Add?input1=1&input2=2
+Accept: application/json
+
+### Addition Overflow
+GET {{BackEndDevChallenge_HostAddress}}/Calculator/Add?input1=2147483647&input2=1
+Accept: application/json
+
+### Valid Subtraction
+GET {{BackEndDevChallenge_HostAddress}}/Calculator/Subtract?input1=3&input2=1
+Accept: application/json
+
+### Subtraction Overflow
+GET {{BackEndDevChallenge_HostAddress}}/Calculator/Subtract?input1=-2147483648&input2=1
+Accept: application/json
+
+### Subtraction Resulting in Negative Value
+GET {{BackEndDevChallenge_HostAddress}}/Calculator/Subtract?input1=1&input2=3
+Accept: application/json
+
+### Valid Multiplication
+GET {{BackEndDevChallenge_HostAddress}}/Calculator/Multiply?input1=2&input2=2
+Accept: application/json
+
+### Multiplication Resulting in Overflow
+GET {{BackEndDevChallenge_HostAddress}}/Calculator/Multiply?input1=2147483647&input2=2
+Accept: application/json
+
+### Division Result
+GET {{BackEndDevChallenge_HostAddress}}/Calculator/Divide?input1=10&input2=2
+Accept: application/json
+
+### Division Truncation
+GET {{BackEndDevChallenge_HostAddress}}/Calculator/Divide?input1=1&input2=3
+Accept: application/json
+
+### Division by Zero
+GET {{BackEndDevChallenge_HostAddress}}/Calculator/Divide?input1=1&input2=0
+Accept: application/json
+

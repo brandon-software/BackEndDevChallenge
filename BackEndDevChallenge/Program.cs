@@ -1,14 +1,14 @@
 using BackEndDevChallenge;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+var config = builder.Configuration;
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<CalculatorContext>(options =>
-       options.UseSqlServer(CalculatorContext.ConnectionString));
+       options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
