@@ -6,6 +6,9 @@ services:
       context: .
       dockerfile: Dockerfile
 
+    environment:
+      - DEFAULT_CONNECTION=Server=db,1433;Database=MathDatabase;User Id=sa;Password=P@ssw0rd;TrustServerCertificate=True
+      
     volumes:
       - ../..:/workspaces:cached
 
